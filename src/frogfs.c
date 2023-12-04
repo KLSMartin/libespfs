@@ -468,7 +468,7 @@ ssize_t frogfs_fseek(frogfs_file_t *f, long offset, int mode)
             ssize_t bytes_read = frogfs_fread(f, buf, bytes_to_consume > sizeof(buf) ? sizeof(buf) : bytes_to_consume);
             if (bytes_read < 0) {
               // fread error
-              LOGE(__func__, "fread() error at file_pos 0x%x", f->file_pos);
+              LOGE(__func__, "fread() error at file_pos 0x%" PRIX32, f->file_pos);
               return -1;
             }
             else if (bytes_read == 0) {

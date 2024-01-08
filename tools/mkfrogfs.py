@@ -9,7 +9,6 @@ from argparse import ArgumentParser
 from struct import Struct
 from zlib import crc32
 
-import heatshrink2
 from hiyapyco import odyldo
 from sortedcontainers import SortedDict
 
@@ -98,6 +97,7 @@ def make_file_object(item, data):
         level = min(max(level, 0), 9)
         data = gzip.compress(data, level)
     elif item[1]['compressor'] == 'heatshrink':
+        import heatshrink2
         compression = FROGFS_COMPRESSION_HEATSHRINK
         window_sz2 = int(config['heatshrink']['window_sz2'])
         lookahead_sz2 = int(config['heatshrink']['lookahead_sz2'])
